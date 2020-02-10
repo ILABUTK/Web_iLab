@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Simulated EMR</title>
+	<link rel="shortcut icon" href="../favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+ -->
+    
+    <link href="./css/bootstrap.css" rel="stylesheet" type="text/css" media="all" /> <!--xp-->
+
+
+	<link rel="stylesheet" href="./css/themes/default/jquery.mobile-1.4.5.min.css">
+	<script src="./js/jquery.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+
+	<script>
+		$( document ).on( "pagecreate", function() {
+			$( "body > [data-role='panel']" ).panel();
+			$( "body > [data-role='panel'] [data-role='listview']" ).listview();
+			
+	
+		});
+		$( document ).on( "pageshow", function() {
+			$( "body > [data-role='header']" ).toolbar();
+			$( "body > [data-role='header'] [data-role='navbar']" ).navbar();		
+	
+		});
+		
+		$(document).on('swipeleft', '.ui-page', function(event){    
+			if(event.handled !== true) // This will prevent event triggering more then once
+			{    
+				var nextpage = $.mobile.activePage.next('[data-role="page"]');
+				// swipe using id of next page if exists
+				if (nextpage.length > 0) {
+					$.mobile.changePage(nextpage, {transition: "slide", reverse: false}, true, true);
+				}
+				event.handled = true;
+			}
+			return false;         
+		});
+		
+		$(document).on('swiperight', '.ui-page', function(event){     
+			if(event.handled !== true) // This will prevent event triggering more then once
+			{      
+				var prevpage = $(this).prev('[data-role="page"]');
+				if (prevpage.length > 0) {
+					$.mobile.changePage(prevpage, {transition: "slide", reverse: true}, true, true);
+				}
+				event.handled = true;
+			}
+			return false;            
+		});
+		
+	</script>
+    
+    <style>
+		.wrap {
+   		 white-space: normal !important;
+		}
+		.warning{
+			color: red;	
+		}
+		
+		.tablefs {
+			font-size: 10px;
+		}
+		<style>
+
+		  table {
+			margin: 0 auto; /* or margin: 0 auto 0 auto */
+			align-self: center;
+		  }
+</style>
+	
+	</style>
+</head>
+<body id="xpbody">
+
+	<div data-role="header" data-position="fixed" data-theme="a">
+		<h1>Frannie Phillips</h1>
+		<a href="#outsidemenu" data-icon="bars" data-iconpos="notext">Menu</a>
+<!--
+		<div data-role="navbar">        
+			<ul>
+				<li><a href="#patientinfo" data-transition="slideup"> Patient Info </a></li>
+				<li><a href="#labs" data-transition="slideup">Lab</a></li>
+				<li><a href="#mar" data-transition="slideup">MAR</a></li>
+			</ul>        
+		</div>
+-->
+	</div><!-- /header -->
+
+	<div data-role="page" id="patientinfo">
+		<div role="main" class="ui-content">
+            <h4>Patient Encounter</h4>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Basic Information</li>
+                <li><p class="wrap"><b>Attending Physician:</b> Dr. Chyka</p></li>
+                <li><p class="wrap"><b>DOB:</b> 02/23/2010</p></li>
+                <li><p class="wrap"><b>Weight:</b>44.09lbs (20.0KG)</p> </li>
+                <li><p class="wrap"><b>Medication Allergies:</b>NKA</p> </li>
+                <li><p class="wrap"><b>Complaint:</b>Pneumonia/Asthma</p> </li>
+            </ul>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">
+                <li style="text-align:center; color:red">WARNING!</li>			
+                <li><p class="wrap warning">Recent laboratory results indicate abnormal results!</p></li>
+            </ul>   
+    		
+    		<ul data-role="listview" data-inset="true" class="ui-listview-inset">
+            	<li style="text-align:center; color:#3D3C3A">Recent Medication Administration Record (MAR)</li>			
+        		<li><p class="wrap"><strong>Medication</strong>: Amoxicillin, <strong>Last Amount</strong>: 11.25 ml (45mg) PO
+, <strong>Last given</strong>: 4 hrs ago, <strong>24 hr Total</strong>: 22.5ml (900mg)
+, <strong>Max/Day</strong>: 25 ml (2000mg), <strong>Notes</strong>: None</p></li>
+                <li><p class="wrap"><strong>Medication</strong>: Tussionex, <strong>Last Amount</strong>: 2.5ml (4.00/5.00mg) PO
+, <strong>Last given</strong>: 12 hrs ago, <strong>24 hr Total</strong>: 2.5ml (4.00/5.00 mg)
+, <strong>Max/Day</strong>: 7.5ml (12/15mg)
+, <strong>Notes</strong>: None</p></li>
+                <li><p class="wrap"><strong>Medication</strong>: Pediapred, <strong>Last Amount</strong>: 10.00ml (10.00mg) PO
+, <strong>Last given</strong>: 6 hrs ago, <strong>24 hr Total</strong>: 20.00ml (20.00mg)
+, <strong>Max/Day</strong>: 60ml (60.00mg)
+, <strong>Notes</strong>: DISCONTINUED</p></li>
+            </ul>
+                     
+            
+        			
+		</div><!-- /content -->
+		
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#patientinfo" class="ui-btn-active ui-state-persist">Encounter</a></li>
+					<li><a href="#labs" data-transition="flip">Lab</a></li>
+					<li><a href="#mar" data-transition="flip">MAR</a></li>
+				</ul>
+			</div>             
+		</div>
+        
+	</div><!-- /page -->
+    
+    <div data-role="page" id="labs">
+        <div role="main" class="ui-content">
+            <h4>Lab Results</h4>
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">
+            	<li style="text-align:center; color:red">WARNING!</li>			
+        		<li><p class="wrap warning">Abnormal values for Kidney function could indicate potential drug interaction, kidney disease!
+</p></li>
+            </ul>
+        
+            <table data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive">
+              <thead>
+                <tr class="ui-bar-d">
+                  <th>Test</th>
+                  <th>Values</th>
+                  <th>Range</th>
+                  <th>Significance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Total Protein</td>
+                  <td>82g/L</td>
+                  <td>64-83g/L</td>
+                  <td>Normal</td>
+                </tr>
+                <tr>
+                  <td>Albumin</td>
+                  <td>4.0g/L</td>
+                  <td>3.5-5.0g/L</td>
+                  <td>Normal</td>
+                </tr>
+                <tr>
+                  <td>Globulin</td>
+                  <td>30g/L</td>
+                  <td>28-34g/L</td>
+                  <td>Normal</td>
+                </tr>
+                <tr>
+                  <td>Albumin/Globulin Ratio</td>
+                  <td>0.23</td>
+                  <td>-</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>Alanine Aminotransferase ALT</td>
+                  <td>9U/L</td>
+                  <td>7-55U/L</td>
+                  <td>Normal</td>
+                </tr>
+                 <tr>
+                  <td>Alakaline Phosphatase</td>
+                  <td>148U/L</td>
+                  <td>40-150U/L</td>
+                  <td>Normal</td>
+                </tr>
+                   <tr>
+                  <td>Aspartate Aminotransferase AST</td>
+                  <td>25U/L</td>
+                  <td>30U/L</td>
+                  <td>Normal</td>
+                </tr>
+                <tr>
+                  <td>Total Bilirubin</td>
+                  <td>19 umol/L</td>
+                  <td>3-21umol/L</td
+                  ><td>Normal</td>
+                </tr>
+                  <tr>
+                  <td>Direct Bilirubin</td>
+                  <td>8 umol/L</td>
+                  <td>0-0.86umol/L</td>
+                  <td>Normal</td>
+                </tr>
+                  <tr>
+                  <td>Indirect Bilirubin</td>
+                  <td>46 umol/L</td>
+                  <td>-</td>
+                  <td></td>
+                </tr> 
+                <tr>
+                  <td>Creatinine</td>
+                  <td>9 mg/ML</td>
+                  <td>0.6-1.2mg/ML</td>
+                  <td><span class="label label-danger">ABNORMAL</span></td>
+                </tr>  
+                <tr>
+                  <td>BUN</td>
+                  <td>35 mg/DL</td>
+                  <td>7-20mg/DL</td>
+                  <td><span class="label label-danger">ABNORMAL</span></td>
+                </tr>  
+                 <tr>
+                  <td>Calcium </td>
+                  <td>7.5 mg/DL</td>
+                  <td>8.5-10.3mg/DL</td>
+                  <td><span class="label label-danger">ABNORMAL</span></td>
+                </tr>   
+                <tr>
+                  <td>INR (PT  Intn'l Normalized Ratio) </td>
+                  <td>3.2</td>
+                  <td>2.0-3.0</td>
+                  <td><span class="label label-danger">ABNORMAL</span></td>
+                </tr>              
+              </tbody>
+            </table>
+        </div>    <!--Content-->
+        
+        <div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#patientinfo" data-transition="flip">Encounter</a></li>
+					<li><a href="#labs" class="ui-btn-active ui-state-persist">Lab</a></li>
+					<li><a href="#mar" data-transition="flip">MAR</a></li>
+				</ul>
+			</div>             
+		</div>
+    </div><!--page-->
+    
+    <div data-role="page" id="mar">
+        <div role="main" class="ui-content">
+            <h4>Medication Administration Record (MAR)</h4>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Medication Orders</li>
+               <!-- <li><p class="wrap warning"><b>Prescribed Doses (verify by calculation)</p></li> -->
+                <li><p class="wrap">Amoxicillin, 45mg bid, oral, 11.25 ml bid scheduled</p> </li>
+                <li><p class="wrap">Tussionex– 4 mg bid Chlorpheniramine/Hydrocodone: 2.5ml bid scheduled
+</p> </li>
+                <li><p class="wrap">Pediapred –10 mg qid; 10ml qid             </p> </li>
+            	<li></li>
+                <li><p class="wrap warning"> No serious drug interactions noted</p></li>
+                
+
+
+            </ul>
+            
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Medication Reference: Amoxicillin</li>
+               <!-- <li><p class="wrap warning"><b>Prescribed Doses (verify by calculation)</p></li> -->
+                <li><p class="wrap"><strong>Form</strong>: Suspension, <strong>Dose</strong>: 45mg/kg q4-6hr, <strong>Concentration</strong>: 400 mg/5ml, <strong>Low</strong>: 11.25 ml, <strong>High</strong>: 11.25ml </p> </li>
+                <li><p class="wrap"><strong>Form</strong>: Tablet (chewable), <strong>Dose</strong>: 500mg/kg q4-6hr, <strong>Concentration</strong>: 500 mg/tablet, <strong>Low</strong>: 1.8 tabs, <strong>High</strong>: 2.75 tabs </p> </li>
+            	<li></li>
+                <li><p class="wrap warning"><b>WARNING:</b> Do not exceed 2000 mg/kg/day Amoxicillin from all sources.</p></li>
+         	</ul>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Medication Reference: Tussionex: chlorpheniramine/hydrocodone</li>
+               <!-- <li><p class="wrap warning"><b>Prescribed Doses (verify by calculation)</p></li> -->
+                <li><p class="wrap">Tussionex: 8mg chlorpheniramine/10mg hydrocodone/5ml</p> </li>
+                <li><p class="wrap"><strong>Dose</strong>*: 0.15-0.20 mg/kg chlorpheniramine bid, <strong>Concentration</strong>: 8/10 mg/5ml elixir, Computed Dose Range: <strong>Low</strong>=1.88ml, <strong>High</strong>=2.50ml</p> </li>
+            	<li><p class="wrap">*7% alcohol; taper dose gradually to D/C if long-term use.  </p></li>
+                <li><p class="wrap warning"><b>WARNING:</b> Do not exceed 12 mg/kg/day chlorpheniramine from all sources. Potential renal toxicity.</p></li>
+         	</ul>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Medication Reference: Pediapred</li>
+               <!-- <li><p class="wrap warning"><b>Prescribed Doses (verify by calculation)</p></li> -->
+                <li><p class="wrap">Pediapred</p> </li>
+                <li><p class="wrap"><strong>Dose</strong>: 0.25-0.50 mg/kg prednisolone qid, <strong>Concentration</strong>: 5mg/5ml elixir, Computed Dose Range: <strong>Low</strong>=5ml, <strong>High</strong>=10ml</p> </li>
+            	
+                <li><p class="wrap warning"><b>WARNING:</b> Do not exceed 60 mg/kg/day prednisolone qid from all sources.</p></li>
+         	</ul>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Meds Administration</li>
+                <li><p class="wrap"><b>Amoxicillin</b><br />For 6-8 years old or weight 21.8-27.2kg</p> </li>
+                
+                <li><p class="wrap"><b>Dose:</b> 45 mg bid (Tip: Verify the dose using the "Dosing Calculator")<br /><b>Concentration:</b>400mg/5ml <br /><b>Safe Range:</b>High 11.25ml <br /></p></li>
+                <li><p class="wrap"><b>Computed Weight Calculation:</b><br />20kg (patient weight) * 45 mg/kg / 400mg * 5ml = 11.25ml<br />Total 12 hr dose is 11.25 ml liquid.</p></li>
+                <li><p class="wrap warning">Amount of medication will depend on medication form (e.g. liquid, capsuls, etc.)</p></li>
+                <a href="#dct" class="ui-btn ui-btn-b ui-mini ui-corner-all" data-transition="flip" onClick="$('#ordereddose').html('Ordered Amount = 11.25ml');">Dosing Calculator</a>
+                <a href="#" class="ui-btn ui-btn-a ui-mini ui-corner-all" onClick="alert('Finished admin Amoxicillin!');">Click to admin Amoxicillin </a>
+
+                <li></li>
+                <li><p class="wrap"><b>Tussionex</b> <br />Weight (age): 16-22kg(4-6 years)</p></li>
+                <li><p class="wrap"><b>Dose:</b> 4 mg bid Chlorpheniramine/Hydrocodone: 2.5ml bid scheduled
+</p></li>
+                
+                <a href="#dct" class="ui-btn ui-btn-b ui-mini ui-corner-all" data-transition="flip" onClick="$('#ordereddose').html('Ordered Amount = 4mg Chlorpheniramine/2.5ml Hydrocodone');">Dosing Calculator</a>
+                <a href="#" class="ui-btn ui-btn-a ui-mini ui-corner-all" onClick="alert('Finished admin Tussionex!');">Click to admin Tussionex </a>
+                
+                <li></li>
+                <li><p class="wrap"><b>Pediapred </b> <br />Weight (age): 16-22kg(4-6 years)</p></li>
+                <li><p class="wrap"><b>Dose:</b> 10 mg qid; 10 ml qid
+</p></li>
+                
+                <a href="#dct" class="ui-btn ui-btn-b ui-mini ui-corner-all" data-transition="flip" onClick="$('#ordereddose').html('Ordered Amount = 10 mg bid; 10 ml bid');">Dosing Calculator</a>
+                <a href="#" class="ui-btn ui-btn-a ui-mini ui-corner-all" onClick="alert('Finished admin Pediapred!');">Click to admin Pediapred </a>
+            </ul>
+            
+           
+            
+            <!--
+            <a href="#inside-a" class="ui-btn ui-shadow ui-corner-all ui-btn-inline">Open right panel</a>
+            <div data-role="panel" id="inside-a" data-position="right" data-display="overlay" data-theme="b">
+                    <ul data-role="listview">
+                        <li data-icon="back"><a href="#" data-rel="close">Close</a></li>
+                        <li>Internal panel</li>
+                        <li>Page A</li>
+                        <li>Overlay</li>
+                    </ul>
+            </div>
+            -->
+        </div> <!--content-->
+        
+        <div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#patientinfo" data-transition="flip">Encounter</a></li>
+					<li><a href="#labs" data-transition="flip" >Lab</a></li>
+					<li><a href="#mar" class="ui-btn-active ui-state-persist">MAR</a></li>
+				</ul>
+			</div>             
+		</div>
+    </div> <!--page-->
+
+
+	<div data-role="panel" id="outsidemenu" data-theme="b">
+		<ul data-role="listview">			
+        	<li></li>
+			<li><a href="#patientinfo" data-transition="flip"> Encounter </a></li>
+			<li><a href="#labs" data-transition="flip">Lab</a></li>
+			<li><a href="#mar" data-transition="flip">MAR</a></li>
+            <li data-icon="home"><a href="#" data-rel="close">Home</a></li>
+		</ul>
+	</div>
+
+	<!--page dct -->
+	<div data-role="page" data-close-btn="none" data-dialog="true" id="dct">
+		<div data-role="header">
+		<h1>Dosing Calculator</h1>
+		</div>
+
+		<div role="main" class="ui-content">
+			<ul data-role="listview" data-inset="true" class="ui-listview-inset">	
+			<li>Dose Amount (mg/kg): <input type="text" name="dose" id="dose" value="" maxlength="4"></li>
+            <li>Weight (kg):<input type="text" name="weight" id="weight" value="20.0" maxlength="4"></li>
+           <!-- <li>Frequency (hours):<input type="text" name="freq" id="freq" value="" maxlength="4"></li>  -->
+            <li>Liquid formulation (Strength mg per ml. Optional):<input type="text" name="mg" id="mg" value="" maxlength="4">mg, per <input type="text" name="ml" id="ml" value="" maxlength="4"> mL</li>
+            <li><p id="doseresult" class="warning">Dose = </p></li>
+            <li><p id="ordereddose" ></p></li>
+            <li><a href="#" data-role="button" data-mini="true" onClick="xcalc()">Calculate</a></li>
+            <li><a href="#" data-role="button" data-mini="true" onClick="xclear()">Clear</a></li>
+            </ul>
+            <a href="../frannie/index.html" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Close</a>
+		</div>
+        <!--calc-->
+        <script>
+            function xcalc() {	
+				//alert($("#weight").val());
+				//alert($("#weight").val()*$("#dose").val()/$("#con").val());
+				var strength = $("#mg").val()/$("#ml").val();
+				var dose = $("#weight").val()*$("#dose").val(); 
+				
+				if (isNaN(dose))
+					$("#doseresult").html("Please input numbers correctly!");
+				
+				if (isNaN(strength)){ //not liquid
+					dose= dose.toPrecision(5);
+					$("#doseresult").html("Calculated Dose=" + dose + "mg");	
+				}else{
+					var num = dose/strength;
+					num= num.toPrecision(5);
+					$("#doseresult").html("Calculated Dose=" + num + "ml");	
+				}				
+            }
+			function xclear(){
+				$("#weight").val('');
+				$("#dose").val('');
+				//$("#freq").val('');
+				$("#ml").val('');
+				$("#mg").val('');
+				$("#doseresult").html("Dose=");
+			}
+			</script>
+	</div> <!--page -->
+    
+    
+    
+    
+</body>
+</html>

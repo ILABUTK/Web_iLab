@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Simulated EMR</title>
+	<link rel="shortcut icon" href="../favicon.ico">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+ -->
+    
+    <link href="./css/bootstrap.css" rel="stylesheet" type="text/css" media="all" /> <!--xp-->
+
+
+	<link rel="stylesheet" href="./css/themes/default/jquery.mobile-1.4.5.min.css">
+	<script src="./js/jquery.js"></script>
+	<script src="./js/jquery.mobile-1.4.5.min.js"></script>
+
+	<script>
+		$( document ).on( "pagecreate", function() {
+			$( "body > [data-role='panel']" ).panel();
+			$( "body > [data-role='panel'] [data-role='listview']" ).listview();
+			
+	
+		});
+		$( document ).on( "pageshow", function() {
+			$( "body > [data-role='header']" ).toolbar();
+			$( "body > [data-role='header'] [data-role='navbar']" ).navbar();		
+	
+		});
+		
+		$(document).on('swipeleft', '.ui-page', function(event){    
+			if(event.handled !== true) // This will prevent event triggering more then once
+			{    
+				var nextpage = $.mobile.activePage.next('[data-role="page"]');
+				// swipe using id of next page if exists
+				if (nextpage.length > 0) {
+					$.mobile.changePage(nextpage, {transition: "slide", reverse: false}, true, true);
+				}
+				event.handled = true;
+			}
+			return false;         
+		});
+		
+		$(document).on('swiperight', '.ui-page', function(event){     
+			if(event.handled !== true) // This will prevent event triggering more then once
+			{      
+				var prevpage = $(this).prev('[data-role="page"]');
+				if (prevpage.length > 0) {
+					$.mobile.changePage(prevpage, {transition: "slide", reverse: true}, true, true);
+				}
+				event.handled = true;
+			}
+			return false;            
+		});
+		
+	</script>
+    
+    <style>
+		.wrap {
+   		 white-space: normal !important;
+		}
+		.warning{
+			color: red;	
+		}
+		
+		.tablefs {
+			font-size: 10px;
+		}
+	
+	</style>
+</head>
+<body id="xpbody">
+
+	<div data-role="header" data-position="fixed" data-theme="a">
+		<h1>Frank Phillips</h1>
+		<a href="#outsidemenu" data-icon="bars" data-iconpos="notext">Menu</a>
+<!--
+		<div data-role="navbar">        
+			<ul>
+				<li><a href="#patientinfo" data-transition="slideup"> Patient Info </a></li>
+				<li><a href="#labs" data-transition="slideup">Lab</a></li>
+				<li><a href="#mar" data-transition="slideup">MAR</a></li>
+			</ul>        
+		</div>
+-->
+	</div><!-- /header -->
+
+	<div data-role="page" id="patientinfo">
+		<div role="main" class="ui-content">
+            <h4>Patient Encounter</h4>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Basic Information</li>
+                <li><p class="wrap"><b>Attending Physician:</b> Dr. Chyka</p></li>
+                <li><p class="wrap"><b>DOB:</b> 04/23/2009</p></li>
+                <li><p class="wrap"><b>Weight:</b>48.4lbs (22.0KG)</p> </li>
+                <li><p class="wrap"><b>Medication Allergies:</b>NKA</p> </li>
+                <li><p class="wrap"><b>Complaint:</b>Fractured Tib/Fib</p> </li>
+            </ul>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">
+                <li style="text-align:center; color:red">WARNING!</li>			
+                <li><p class="wrap warning">Recent laboratory results indicate abnormal results!</p></li>
+            </ul>   
+    		
+    		<ul data-role="listview" data-inset="true" class="ui-listview-inset">
+            	<li style="text-align:center; color:#3D3C3A">Recent Medication Administration Record (MAR)</li>			
+        		<li><p class="wrap"><strong>Medication</strong>: Acetaminophen, <strong>Last Amount</strong>: 10.90 ml(350 mg), <strong>Last given</strong>: 4 hrs ago, <strong>24 hr Total</strong>: 43.6 ml (1400mg), <strong>Max/Day</strong>: 51.5 ml (1650mg), <strong>Notes</strong>: Mod-svr pain</p></li>
+                <li><p class="wrap"><strong>Medication</strong>: Lortab, <strong>Last Amount</strong>: 5.06 ml(3.38/101.2 mg), <strong>Last given</strong>: 2 hrs ago, <strong>24 hr Total</strong>: 15.18 ml (10.14/303.6mg), <strong>Max/Day</strong>: 30.38 ml (20.25/1650mg), <strong>Notes</strong>: Mod-svr pain</p></li>
+                <li><p class="wrap"><strong>Medication</strong>: Ondansteron, <strong>Last Amount</strong>: 2.25 ml(2.25 mg), <strong>Last given</strong>: 12 hrs ago, <strong>24 hr Total</strong>: 2.25 ml (2.25mg), <strong>Max/Day</strong>: 4 ml (4mg), <strong>Notes</strong>: DISCONTINUED</p></li>
+            </ul>
+                     
+            
+        			
+		</div><!-- /content -->
+		
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#patientinfo" class="ui-btn-active ui-state-persist">Encounter</a></li>
+					<li><a href="#labs" data-transition="flip">Lab</a></li>
+					<li><a href="#mar" data-transition="flip">MAR</a></li>
+				</ul>
+			</div>             
+		</div>
+        
+	</div><!-- /page -->
+    
+    <div data-role="page" id="labs">
+        <div role="main" class="ui-content">
+            <h4>Lab Results</h4>
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">
+            	<li style="text-align:center; color:red">WARNING!</li>			
+        		<li><p class="wrap warning">Increased hepatic test values indicate issues possibly related to disease, medication isssues or injury!</p></li>
+            </ul>
+        
+            <table data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive">
+              <thead>
+                <tr class="ui-bar-d">
+                  <th>Test</th>
+                  <th>Values</th>
+                  <th>Range</th>
+                  <th>Significance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Total Protein</td>
+                  <td>82g/L</td>
+                  <td>64-83g/L</td>
+                  <td>Normal</td>
+                </tr>
+                <tr>
+                  <td>Albumin</td>
+                  <td>15g/L</td>
+                  <td>3.5-5.0g/L</td>
+                  <td><span class="label label-danger">HIGH</span></td>
+                </tr>
+                <tr>
+                  <td>Globulin</td>
+                  <td>64g/L</td>
+                  <td>28-34g/L</td>
+                  <td><span class="label label-danger">HIGH</span></td>
+                </tr>
+                <tr>
+                  <td>Albumin/Globulin Ratio</td>
+                  <td>0.23</td>
+                  <td>-</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>Alanine Aminotransferase ALT</td>
+                  <td>84U/L</td>
+                  <td>7-55U/L</td>
+                  <td><span class="label label-danger">HIGH</span></td>
+                </tr>
+                 <tr>
+                  <td>Alakaline Phosphatase</td>
+                  <td>200U/L</td>
+                  <td>40-150U/L</td>
+                  <td><span class="label label-danger">HIGH</span></td>
+                </tr>
+                   <tr>
+                  <td>Aspartate Aminotransferase AST</td>
+                  <td>43U/L</td>
+                  <td>&lt;30U/L</td>
+                  <td><span class="label label-danger">HIGH</span></td>
+                </tr>
+                <tr>
+                  <td>Total Bilirubin</td>
+                  <td>55 umol/L</td>
+                  <td>3-21umol/L</td
+                  ><td><span class="label label-danger">HIGH</span></td>
+                </tr>
+                  <tr>
+                  <td>Direct Bilirubin</td>
+                  <td>9 umol/L</td>
+                  <td>0-0.86umol/L</td>
+                  <td><span class="label label-danger">HIGH</span></td>
+                </tr>
+                  <tr>
+                  <td>Indirect Bilirubin</td>
+                  <td>46 umol/L</td>
+                  <td>-</td>
+                  <td></td>
+                </tr>                
+              </tbody>
+            </table>
+        </div>    <!--Content-->
+        
+        <div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#patientinfo" data-transition="flip">Encounter</a></li>
+					<li><a href="#labs" class="ui-btn-active ui-state-persist">Lab</a></li>
+					<li><a href="#mar" data-transition="flip">MAR</a></li>
+				</ul>
+			</div>             
+		</div>
+    </div><!--page-->
+    
+    <div data-role="page" id="mar">
+        <div role="main" class="ui-content">
+            <h4>Medication Administration Record (MAR)</h4>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Medication Orders</li>
+               <!-- <li><p class="wrap warning"><b>Prescribed Doses (verify by calculation)</p></li> -->
+                <li><p class="wrap">Acetaminophen, 350mg, oral, 10.9ml q4h PRN</p> </li>
+                <li><p class="wrap">Lortab Elixir - Hydrocodone/Acetaminophen, 5.06ml  q4h Scheduled</p> </li>
+            	<li></li>
+                <li><p class="wrap warning"><b>ALERT: Potential Drug Interactions</b> Two medications containing ACETAMINOPHEN</p></li>
+                <li><p class="wrap warning"> Lortab-Acetaminophen. Limit acetaminophen from all sources to standard max acetaminophen doses: combo may incr. risk of acetaminophen toxicity.
+</p></li>
+                <li><p class="wrap warning"> Hydrocodone + Ondansetron. Caution advised especially w/ hydrocodone ER doses >160 mg/day: combo may incr. risk of QT prolongation, cardiac arrhythmias (additive effects). 
+
+                </p></li>
+
+
+            </ul>
+            
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Medication Reference: Acetaminophen</li>
+               <!-- <li><p class="wrap warning"><b>Prescribed Doses (verify by calculation)</p></li> -->
+                <li><p class="wrap">Form: Suspension, Dose: 10-15mg/kg q4-6hr, Concentration: 160 mg/5ml, Low: 6.88 ml, High: 10.31ml </p> </li>
+                <li><p class="wrap">Form: Tablet, Dose: 10-15mg/kg q4-6hr, Concentration: 80 mg/tablet, Low: 2.75 tabs, High: 4.1 tabs </p> </li>
+            	<li></li>
+                <li><p class="wrap warning"><b>WARNING:</b> Do not exceed 75 mg/kg/day Acetaminophen from all sources.</p></li>
+         	</ul>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Medication Reference: Lortab</li>
+               <!-- <li><p class="wrap warning"><b>Prescribed Doses (verify by calculation)</p></li> -->
+                <li><p class="wrap">Lortab: 10mgHydrocondone/300mg Acetaminophen/15ml</p> </li>
+                <li><p class="wrap">Dose*: 0.1-0.15 mg/kg hydrocodone, Concentration: 10/300 mg/15ml elixir, Computed Dose Range: Low=3.3ml, High=4.95ml</p> </li>
+            	<li><p class="wrap">*7% alcohol; taper dose gradually to D/C if long-term use. </p></li>
+                <li><p class="wrap warning"><b>WARNING:</b> Do not exceed 75 mg/kg/day Acetaminophen from all sources.</p></li>
+         	</ul>
+            
+            <ul data-role="listview" data-inset="true" class="ui-listview-inset">			
+        		<li style="text-align:center; color:#3D3C3A">Meds Administration</li>
+                <li><p class="wrap"><b>Acetaminophen</b><br />For 6-8 years old or weight 21.8-27.2kg</p> </li>
+                
+                <li><p class="wrap"><b>Dose:</b> 15mg/kg (350mg per dose) (Tip: Verify the dose using the "Dosing Calculator")<br /><b>Concentration:</b>160mg/5ml <br /><b>Safe Range:</b>220-330mg <br /><b>q4h</b></p></li>
+                <li><p class="wrap"><b>Computed Weight Calculation:</b><br />22.0kg (patient weight) * 90 mg/kg/day /6/ 160mg * 5ml = 10.3 ml<br />Total 4 hr dose is 10.3 ml liquid.</p></li>
+                <li><p class="wrap warning">Amount of medication will depend on medication form (e.g. liquid, capsuls, etc.)</p></li>
+                <a href="#dct" class="ui-btn ui-btn-b ui-mini ui-corner-all" data-transition="flip" onClick="$('#ordereddose').html('Ordered Amount = 10.9ml');">Dosing Calculator</a>
+                <a href="#" class="ui-btn ui-btn-a ui-mini ui-corner-all" onClick="alert('Finished admin Acetaminophen!');">Click to admin Acetaminophen </a>
+
+                <li></li>
+                <li><p class="wrap"><b>Lortab</b> <br />Weight (age): 16-22kg(4-6 years)</p></li>
+                <li><p class="wrap"><b>Dose:</b> 5ml <br /><b>Concentration:</b>7.5mg Hydrocodone/325mg acetaminophen per 15 mL <br /><b>Safe Range:</b>220-330mg <br /><b>q4h</b></p></li>
+                <li><p class="wrap"><b>Computed Range Calculation:</b><br />5ml<br />Max:30ml/day</p></li>
+                <a href="#dct" class="ui-btn ui-btn-b ui-mini ui-corner-all" data-transition="flip" onClick="$('#ordereddose').html('Ordered Amount = 5.06ml');">Dosing Calculator</a>
+                <a href="#" class="ui-btn ui-btn-a ui-mini ui-corner-all" onClick="alert('Finished admin Lortab!');">Click to admin Lortab </a>
+            </ul>
+            
+           
+            
+            <!--
+            <a href="#inside-a" class="ui-btn ui-shadow ui-corner-all ui-btn-inline">Open right panel</a>
+            <div data-role="panel" id="inside-a" data-position="right" data-display="overlay" data-theme="b">
+                    <ul data-role="listview">
+                        <li data-icon="back"><a href="#" data-rel="close">Close</a></li>
+                        <li>Internal panel</li>
+                        <li>Page A</li>
+                        <li>Overlay</li>
+                    </ul>
+            </div>
+            -->
+        </div> <!--content-->
+        
+        <div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#patientinfo" data-transition="flip">Encounter</a></li>
+					<li><a href="#labs" data-transition="flip" >Lab</a></li>
+					<li><a href="#mar" class="ui-btn-active ui-state-persist">MAR</a></li>
+				</ul>
+			</div>             
+		</div>
+    </div> <!--page-->
+
+
+	<div data-role="panel" id="outsidemenu" data-theme="b">
+		<ul data-role="listview">			
+        	<li></li>
+			<li><a href="#patientinfo" data-transition="flip"> Encounter </a></li>
+			<li><a href="#labs" data-transition="flip">Lab</a></li>
+			<li><a href="#mar" data-transition="flip">MAR</a></li>
+            <li data-icon="home"><a href="#" data-rel="close">Home</a></li>
+		</ul>
+	</div>
+
+
+	<div data-role="page" data-close-btn="none" data-dialog="true" id="dct">
+		<div data-role="header">
+		<h1>Dosing Calculator</h1>
+		</div>
+
+		<div role="main" class="ui-content">
+			<ul data-role="listview" data-inset="true" class="ui-listview-inset">	
+			<li>Dose Amount (mg/kg): <input type="text" name="dose" id="dose" value="" maxlength="4"></li>
+            <li>Weight (kg):<input type="text" name="weight" id="weight" value="22.0" maxlength="4"></li>
+           <!-- <li>Frequency (hours):<input type="text" name="freq" id="freq" value="" maxlength="4"></li>  -->
+            <li>Liquid formulation (Strength mg per ml. Optional):<input type="text" name="mg" id="mg" value="" maxlength="4">mg, per <input type="text" name="ml" id="ml" value="" maxlength="4"> mL</li>
+            <li><p id="doseresult" class="warning">Dose = </p></li>
+            <li><p id="ordereddose" >Ordered Amount = 10.9ml</p></li>
+            <li><a href="#" data-role="button" data-mini="true" onClick="xcalc()">Calculate</a></li>
+            <li><a href="#" data-role="button" data-mini="true" onClick="xclear()">Clear</a></li>
+            </ul>
+            <a href="../frannie/index.html" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Close</a>
+		</div>
+        <!--calc-->
+        <script>
+            function xcalc() {	
+				//alert($("#weight").val());
+				//alert($("#weight").val()*$("#dose").val()/$("#con").val());
+				var strength = $("#mg").val()/$("#ml").val();
+				var dose = $("#weight").val()*$("#dose").val(); 
+				
+				if (isNaN(dose))
+					$("#doseresult").html("Please input numbers correctly!");
+				
+				if (isNaN(strength)){ //not liquid
+					dose= dose.toPrecision(5);
+					$("#doseresult").html("Calculated Dose=" + dose + "mg");	
+				}else{
+					var num = dose/strength;
+					num= num.toPrecision(5);
+					$("#doseresult").html("Calculated Dose=" + num + "ml");	
+				}				
+            }
+			function xclear(){
+				$("#weight").val('');
+				$("#dose").val('');
+				//$("#freq").val('');
+				$("#ml").val('');
+				$("#mg").val('');
+				$("#doseresult").html("Dose=");
+			}
+			</script>
+	</div> <!--page -->
+</body>
+</html>

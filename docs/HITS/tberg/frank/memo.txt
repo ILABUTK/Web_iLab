@@ -1,0 +1,23 @@
+
+
+$(document).on( "pageinit", function() {
+				<!--XP -->
+			$("#patientinfo").on( "swipeleft", function() {
+				$.mobile.navigate( "#labs", { transition: "slide" });
+			});
+			$("#patientinfo").on( "swiperight", function() {
+				$.mobile.navigate( "#mar", { transition: "slide" });
+			});
+			$("#labs").on( "swipeleft", function() {
+				$.mobile.navigate( "#mar", { transition: "slide" });
+			});
+			$("#labs").on( "swiperight", function() {
+				$.mobile.navigate( "#patientinfo", { transition: "slide" });
+			});
+			$("#mar").on( "swipeleft", function() {
+				$.mobile.navigate( "#patientinfo", { transition: "slide" });
+			});
+			$("#mar").on( "swiperight", function() {
+				$.mobile.navigate( "#labs", { transition: "slide" });
+			});	
+		});		
