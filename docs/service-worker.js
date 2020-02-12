@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.d8740b10697b30a76ad70afc77e407b2.js"
+  "precache-manifest.585de83bfa296d523c22185b08278e97.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "ilabweb"});
+workbox.core.setCacheNameDetails({prefix: "myilabweb"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {

@@ -1,11 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "609c9ac5eb580afa420d",
-    "url": "css/2.86bae030.css"
-  },
-  {
-    "revision": "16d3687e70a7a77e37c6",
-    "url": "css/app.2dd4c5eb.css"
+    "revision": "d80b403deadff73abb5e",
+    "url": "css/app.a21117fe.css"
   },
   {
     "revision": "5cb7edfceb233100075dc9a1e12e8da3",
@@ -40,28 +36,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.0509ab09.woff2"
   },
   {
-    "revision": "aaaceb406e62ecd01fe2b3ae8783c490",
+    "revision": "ab220216cecbb090a1006be1fca5320d",
     "url": "index.html"
   },
   {
-    "revision": "609c9ac5eb580afa420d",
-    "url": "js/2.a3378808.js"
+    "revision": "27ad983e0e66f245542e",
+    "url": "js/2.bc7f2eab.js"
   },
   {
-    "revision": "c29ac579de00e34cb8e8",
-    "url": "js/3.5058fe09.js"
+    "revision": "e6ac5f786164959004b3",
+    "url": "js/3.b18c7f19.js"
   },
   {
-    "revision": "06ea67d7fced684a7130",
-    "url": "js/4.ba242adf.js"
+    "revision": "720a7d4a0fc104d1b9ff",
+    "url": "js/4.99f14cd8.js"
   },
   {
-    "revision": "16d3687e70a7a77e37c6",
-    "url": "js/app.8e70baec.js"
+    "revision": "d80b403deadff73abb5e",
+    "url": "js/app.a2dac29a.js"
   },
   {
-    "revision": "65d0e973fa3487e1f08a",
-    "url": "js/vendor.993080e8.js"
+    "revision": "1d18a617df576c686900",
+    "url": "js/vendor.1eae6f7f.js"
   },
   {
     "revision": "2fd178daf8a5bcb64d88049297164872",
@@ -70,10 +66,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "805b0a66d63db95a76ddda23e3a8c12f",
     "url": "statics/app-logo-128x128.png"
-  },
-  {
-    "revision": "a7795e1ac7562d941ab54b43c03d7bbd",
-    "url": "statics/iLab.png"
   },
   {
     "revision": "bde75c95c26cbe407d8c3a51149c9047",
@@ -134,5 +126,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ba58d8b825312a31114fb91484dadbeb",
     "url": "statics/icons/safari-pinned-tab.svg"
+  },
+  {
+    "revision": "a7795e1ac7562d941ab54b43c03d7bbd",
+    "url": "statics/images/iLab.png"
   }
 ]);
