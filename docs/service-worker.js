@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.585de83bfa296d523c22185b08278e97.js"
+  "precache-manifest.9a8f0357107929dd6af142bf6a081216.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "myilabweb"});
