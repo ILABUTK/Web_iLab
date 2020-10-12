@@ -2,7 +2,7 @@
   "name": "myilabweb",
   "version": "0.0.1",
   "description": "iLab Web Site",
-  "productName": "iLab Web",
+  "productName": "The iLab Website",
   "cordovaId": "com.ilab.ilabweb",
   "capacitorId": "",
   "author": "iLabUTK <ilab.utk@gmail.com>",
@@ -14,7 +14,8 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "vue-carousel-3d": "^1.0.1"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0",

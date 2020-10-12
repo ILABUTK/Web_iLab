@@ -3,7 +3,10 @@ import VueRouter from 'vue-router'
 
 import routes from './routes'
 
+import Carousel3d from 'vue-carousel-3d'
+
 Vue.use(VueRouter)
+Vue.use(Carousel3d)
 
 /*
  * If not building with SSR mode, you can

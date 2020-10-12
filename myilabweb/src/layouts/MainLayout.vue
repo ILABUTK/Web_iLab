@@ -17,7 +17,7 @@
         <div></div>
       </q-toolbar>
 
-        <q-tabs  v-model="tab" class="bg-grey-7  "> <!-- v-if="!leftDrawerOpen" -->
+        <q-tabs  v-model="tab" class="bg-secondary"> <!-- v-if="!leftDrawerOpen" -->
           <q-route-tab v-for="t in ilabTabs" :name="t.name" :label="t.label" :to="t.url" :key="t.name" />
       </q-tabs>
     </q-header>
@@ -54,7 +54,9 @@ export default {
   // components: {
   //   EssentialLink
   // },
-
+  mounted () {
+    this.$q.dark.set(true)
+  },
   data () {
     return {
       leftDrawerOpen: false,
@@ -66,19 +68,19 @@ export default {
           url: '/'
         },
         {
-          name: 'howto',
-          label: 'HOW-TO',
-          url: '/how'
-        },
-        {
           name: 'gallery',
           label: 'Gallery',
           url: '/gallery'
         },
         {
-          name: 'about',
-          label: 'About',
-          url: '/about'
+          name: 'resources',
+          label: 'Resources',
+          url: '/resource'
+        },
+        {
+          name: 'contact',
+          label: 'Contact Us',
+          url: '/contact'
         }
       ],
       essentialLinks: [
