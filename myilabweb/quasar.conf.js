@@ -60,6 +60,8 @@ module.exports = function (ctx) {
       showProgress: true,
       gzip: false,
       analyze: false,
+      publicPath: '/ilab/',
+
       // Options below are automatically set depending on the env, set them if you want to override
       // preloadChunks: false,
       // extractCSS: false,
